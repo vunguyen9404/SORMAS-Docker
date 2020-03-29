@@ -3,7 +3,7 @@ services:
   sormas:
     links: 
       - postgres
-    image: sormas-docker_sormas
+    image: pikalong/sormas-application:v${SORMAS_VERSION}
     environment:
       - SORMAS_POSTGRES_USER=${SORMAS_POSTGRES_USER}
       - SORMAS_POSTGRES_PASSWORD=${SORMAS_POSTGRES_PASSWORD}
@@ -29,7 +29,7 @@ services:
   postgres:
     restart: unless-stopped
     command: -c 'config_file=/etc/postgresql/postgresql.conf'
-    image: hzibraunschweig/sormas-postgres:1.36.2
+    image: pikalong/sormas-postgresql:v${SORMAS_VERSION}
     environment:
       - POSTGRES_PASSWORD=${SORMAS_POSTGRES_PASSWORD}
       - DB_NAME=sormas
@@ -40,7 +40,7 @@ services:
     volumes:
       - ${SORMAS_PATH}/psqldata:/var/lib/postgresql/data
   pg_dump: 
-    image: hzibraunschweig/sormas-pg-dump:1.36.2
+    image: pikalong/sormas-pgdump:v${SORMAS_VERSION}
     environment:
       - DB_HOST=${DB_HOST}
       - DB_NAME=sormas
@@ -56,7 +56,7 @@ services:
       - sormas
     depends_on:
       - sormas
-    build: ./apache2
+    image: pikalong/sormas-apache2:v${SORMAS_VERSION}
     environment:
       - SORMAS_SERVER_URL=${SORMAS_SERVER_URL}
       - TZ=${TZ}
