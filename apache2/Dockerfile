@@ -1,6 +1,6 @@
 FROM httpd:2.4-alpine
 ARG SORMAS_SERVER_URL
-ENV SORMAS_VERSION=1.36.2
+ENV SORMAS_VERSION=1.37.0
 
 RUN apk add tzdata
 RUN mkdir -p /var/log/apache2/ \
@@ -16,7 +16,7 @@ RUN chmod +x /tmp/vhost.conf.sh
 RUN mkdir -p /var/www/sormas/downloads && \
     DEPLOY_PATH=$(mktemp -d) && \
     cd ${DEPLOY_PATH} && \
-    wget https://github.com/hzi-braunschweig/SORMAS-Project/releases/download/v${SORMAS_VERSION}/sormas_${SORMAS_VERSION}.zip -O sormas.zip && \
+    wget https://github.com/vunguyen9404/SORMAS-Project/releases/download/v${SORMAS_VERSION}/sormas_v${SORMAS_VERSION}.zip -O sormas.zip && \
     unzip sormas.zip deploy/android/*  && \
     mv deploy/android/* /var/www/sormas/downloads/ && \
     cd - && \

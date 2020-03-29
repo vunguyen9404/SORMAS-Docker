@@ -28,7 +28,7 @@ mkdir -p ${DEPLOY_PATH}
 mkdir -p ${DOWNLOADS_PATH}
 
 pushd ${DEPLOY_PATH}
-wget https://github.com/hzi-braunschweig/SORMAS-Project/releases/download/v${SORMAS_VERSION}/sormas_${SORMAS_VERSION}.zip -O ${DOMAIN_NAME}.zip 
+wget https://github.com/vunguyen9404/SORMAS-Project/releases/download/v${SORMAS_VERSION}/sormas_v${SORMAS_VERSION}.zip -O ${DOMAIN_NAME}.zip 
 unzip ${DOMAIN_NAME}.zip
 rm ${DOMAIN_NAME}.zip
 popd
